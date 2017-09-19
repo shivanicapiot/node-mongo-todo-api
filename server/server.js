@@ -23,6 +23,13 @@ app.post('/todos', (req, res) => {
         res.status(400).send(err);
     })
 })
+app.get('/todos', (req, res) => {
+    Todo.find().then((doc) => {
+        res.status(200).send({doc})
+    }, (err) => {
+        res.status(400).send(err);
+    })
+})
 app.listen(4000, () => {
     console.log("Server Started On Port 4000");
 })
